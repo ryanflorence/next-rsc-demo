@@ -1,4 +1,4 @@
-import { Links, LiveReload, Meta, useLoaderData } from "remix";
+import { Links, LiveReload, Meta, Scripts, useLoaderData } from "remix";
 import { default as News, loader } from "./pages/ssr";
 import ExtraMeta from "./components/meta";
 
@@ -17,6 +17,7 @@ export default function Document() {
       <body>
         <News data={useLoaderData()} />
         {process.env.NODE_ENV === "development" && <LiveReload />}
+        <Scripts />
       </body>
     </html>
   );
