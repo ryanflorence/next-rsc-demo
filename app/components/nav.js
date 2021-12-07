@@ -1,14 +1,15 @@
 export default function Nav() {
-  ;<ul className="nav-ul">
-    <Item href="/newest">new</Item>
-    <Item href="/show">show</Item>
-    <Item href="/ask">ask</Item>
-    <Item href="/jobs">jobs</Item>
-    <Item href="/submit">submit</Item>
+  return (
+    <ul className="nav-ul">
+      <Item href="/newest">new</Item>
+      <Item href="/show">show</Item>
+      <Item href="/ask">ask</Item>
+      <Item href="/jobs">jobs</Item>
+      <Item href="/submit">submit</Item>
 
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
       .nav-ul {
         list-style-type: none;
       }
@@ -27,13 +28,14 @@ export default function Nav() {
         color: #fff;
       }
     `,
-      }}
-    />
-  </ul>
+        }}
+      />
+    </ul>
+  );
 }
 
 const Item = ({ href, children }) => (
   <li>
     <a href={href}>{children}</a>
   </li>
-)
+);

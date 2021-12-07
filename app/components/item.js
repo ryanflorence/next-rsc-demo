@@ -1,6 +1,6 @@
-import Story from '../components/story.client'
-import Comment from '../components/comment'
-import CommentForm from '../components/comment-form'
+import Story from "./story";
+import Comment from "./comment";
+import CommentForm from "./comment-form";
 
 export default function Item({ story, comments = null }) {
   return (
@@ -39,5 +39,5 @@ export default function Item({ story, comments = null }) {
         }
       `}</style>
     </div>
-  )
+  );
 }

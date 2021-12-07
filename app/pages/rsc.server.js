@@ -3,9 +3,13 @@ import { Suspense } from "react";
 // Shared Components
 import Spinner from "../components/spinner";
 
+// Server Components
+import SystemInfo from "../components/server-info.server";
+
 // Client Components
-import Page from "../components/page.client";
-import Story from "../components/story.client";
+import Page from "../components/page";
+import Story from "../components/story";
+import Footer from "../components/footer";
 
 // Utils
 import fetchData from "../lib/fetch-data";
@@ -25,7 +29,7 @@ function NewsWithData() {
     <>
       {storyIds.slice(0, 30).map((id) => {
         return (
-          <Suspense key={id} fallback={<Spinner />}>
+          <Suspense fallback={<Spinner />} key={id}>
             <StoryWithData id={id} />
           </Suspense>
         );
@@ -37,13 +41,11 @@ function NewsWithData() {
 export default function News() {
   return (
     <Page>
-      {typeof window === "undefined" ? (
-        <Spinner />
-      ) : (
-        <Suspense fallback={<Spinner />}>
-          <NewsWithData />
-        </Suspense>
-      )}
+      <Suspense fallback={<Spinner />}>
+        <NewsWithData />
+      </Suspense>
+      <Footer />
+      <SystemInfo />
     </Page>
   );
 }

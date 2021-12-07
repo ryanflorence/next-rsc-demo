@@ -1,22 +1,53 @@
-# Next.js 12 React Server Components Demo (Alpha)
+# Welcome to Remix!
 
-This is the demo of Hacker News built with Next.js and React Server Components. Read our announcement here: [Next.js 12](https://nextjs.org/blog/next-12).
+- [Remix Docs](https://remix.run/docs)
 
-**Try the demo: https://next-news-rsc.vercel.sh**
+## Development
 
-### Development
+From your terminal:
 
-To get started, run the following commands:
-
-```
-yarn
-yarn dev
+```sh
+npm run dev
 ```
 
-And visit localhost:3000.
+This starts your app in development mode, rebuilding assets on file changes.
 
-### Note
+## Deployment
 
-React Server Components are still [experimental](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html). To learn more about React Server Components, read our blog post: [Everything About React Server Components](https://vercel.com/blog/everything-about-react-server-components).
+First, build your app for production:
 
-React Server Components support is a built-in feature of Next.js 12. Full documentation is available here: [React 18 — Next.js](https://nextjs.org/docs/advanced-features/react-18).
+```sh
+npm run build
+```
+
+Then run the app in production mode:
+
+```sh
+npm start
+```
+
+Now you'll need to pick a host to deploy it to.
+
+### DIY
+
+If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `remix build`
+
+- `build/`
+- `public/build/`
+
+### Using a Template
+
+When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
+
+```sh
+cd ..
+# create a new project, and pick a pre-configured host
+npx create-remix@latest
+cd my-new-remix-app
+# remove the new project's app (not the old one!)
+rm -rf app
+# copy your app over
+cp -R ../my-old-remix-app/app app
+```

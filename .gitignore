@@ -2,3 +2,7 @@ node_modules
 .next
 *.log
 .vercel
+
+/public/build
+/build
+/.cache

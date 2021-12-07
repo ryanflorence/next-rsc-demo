@@ -1,30 +1,30 @@
-import { Suspense } from 'react'
+import { Suspense } from "react";
 
 // Shared Components
-import Spinner from '../components/spinner'
+import Spinner from "../components/spinner";
 
 // Server Components
-import SystemInfo from '../components/server-info.server'
+import SystemInfo from "../components/server-info.server";
 
 // Client Components
-import Page from '../components/page.client'
-import Story from '../components/story.client'
-import Footer from '../components/footer.client'
+import Page from "../components/page";
+import Story from "../components/story";
+import Footer from "../components/footer";
 
 // Utils
-import fetchData from '../lib/fetch-data'
-import { transform } from '../lib/get-item'
-import useData from '../lib/use-data'
+import fetchData from "../lib/fetch-data";
+import { transform } from "../lib/get-item";
+import useData from "../lib/use-data";
 
 function StoryWithData({ id }) {
   const data = useData(`s-${id}`, () =>
     fetchData(`item/${id}`).then(transform)
-  )
-  return <Story {...data} />
+  );
+  return <Story {...data} />;
 }
 
 function NewsWithData() {
-  const storyIds = useData('top', () => fetchData('topstories', 500))
+  const storyIds = useData("top", () => fetchData("topstories", 500));
   return (
     <>
       {storyIds.slice(0, 30).map((id) => {
@@ -32,10 +32,10 @@ function NewsWithData() {
           <Suspense key={id} fallback={<Spinner />}>
             <StoryWithData id={id} />
           </Suspense>
-        )
+        );
       })}
     </>
-  )
+  );
 }
 
 export default function News() {
@@ -47,5 +47,5 @@ export default function News() {
       <Footer />
       <SystemInfo />
     </Page>
-  )
+  );
 }
